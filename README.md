@@ -2,7 +2,7 @@
 Final project for CS1320. Composed of a heart disease screening app
 
 ### Tasks
-* get an app running
+* get an app running (By Sat, 20 Mar)
 * backend running with database
 * homescreen
 * registration section
