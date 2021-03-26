@@ -60,4 +60,4 @@ username (TEXT) PRIMARY KEY
 first-name (TEXT)
 last-name (TEXT)
 position (TEXT) eg. doctor, volunteer
-hashed-password (BINARY(64))
+hashed-password (CHAR(n)) where n is length of hash depending on the hashing function used
