@@ -1,0 +1,54 @@
+Four Tables: Registration, Echo-screening, Penicillin-screening, and Name-id.
+---
+
+1. Registration Table:
+id autoincrement (int) PRIMARY KEY
+first-name (TEXT)
+last-name (TEXT)
+birth-date (DATE)
+age (int)
+school-name (TEXT)
+standard (decimal)
+village (TEXT)
+sub-county (TEXT)
+church (TEXT)
+childrens-Home
+care-taker (TEXT)
+father (TEXT)
+mother (TEXT)
+care-taker-phone VARCHAR(14) eg: 00254721123456, +254721123456
+alternate-phone VARCHAR(14)
+
+---
+
+2. Echo-screening Table:
+id (int) PRIMARY KEY (matches ID from registration table)
+date (DATETIME)
+location (TEXT)
+anterior-mitral-valve-leaflet-thickness SET(Normal, Abnormal)
+posterior-mitral-valve-leaflet-thickness SET(Normal, Thickened)
+posterior-mitral-valve-mobility SET(Normal, Reduced)
+aortic-valve-thickness SET(Normal, Thickened)
+mitral-valve-function SET(Normal, Abnormal)
+aortic-valve-function SET(Normal, Abnormal)
+anterior-mitral-valve-leaflet-mobility SET(Normal, Abnormal)
+mitral-regurgitation SET(">1.5cm", ">1cm")
+aortic-regurgitation BOOL
+comments (TEXT)
+
+---
+
+3. Penicillin-screening Table:
+id (int) PRIMARY KEY (matches ID from registration table)
+date (DATETIME)
+location (TEXT)
+worsening-exercise-intolerance (BOOL)
+poor-pcn-reaction (BOOL)
+injection-given (BOOL)
+comments (TEXT)
+
+---
+
+4. Name-id Table:
+id (int) PRIMARY KEY
+first-name-last-name (TEXT) eg. Evans-Kipkoech
