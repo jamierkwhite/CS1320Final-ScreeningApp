@@ -1,4 +1,4 @@
-Four Tables: Registration, Echo-screening, Penicillin-screening, and Name-id.
+Five Tables: Registration, Echo-screening, Penicillin-screening, Name-id, and Login-info.
 ---
 
 1. Registration Table:
@@ -52,3 +52,12 @@ comments (TEXT)
 4. Name-id Table:
 id (int) PRIMARY KEY
 first-name-last-name (TEXT) eg. Evans-Kipkoech
+
+---
+
+5. Login-info Table:
+username (TEXT) PRIMARY KEY
+first-name (TEXT)
+last-name (TEXT)
+position (TEXT) eg. doctor, volunteer
+hashed-password (BINARY(64))
