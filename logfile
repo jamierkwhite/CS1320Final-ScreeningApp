@@ -1,0 +1,29 @@
+2021-03-23 11:36:57.651 EDT [22416] LOG:  starting PostgreSQL 13.0, compiled by Visual C++ build 1914, 64-bit
+2021-03-23 11:36:57.656 EDT [22416] LOG:  listening on IPv6 address "::1", port 5432
+2021-03-23 11:36:57.656 EDT [22416] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-23 11:36:57.701 EDT [8872] LOG:  database system was shut down at 2021-03-23 11:36:16 EDT
+2021-03-23 11:36:57.733 EDT [22416] LOG:  database system is ready to accept connections
+2021-03-23 11:41:44.529 EDT [21068] FATAL:  role "postgres" does not exist
+2021-03-23 11:41:55.751 EDT [10680] FATAL:  role "windows" does not exist
+2021-03-23 11:42:00.294 EDT [6328] FATAL:  database "jamie" does not exist
+2021-03-23 11:46:05.598 EDT [13120] ERROR:  syntax error at or near "ALTER" at character 59
+2021-03-23 11:46:05.598 EDT [13120] STATEMENT:  CREATE ROLE server WITH LOGIN PASSWORD 'jvjye4b66k9ermx7'
+	ALTER ROLE server WITH CREATEDB
+	CREATE ROLE server WITH LOGIN PASSWORD 'jvjye4b66k9ermx7';
+2021-03-23 11:46:11.934 EDT [13120] ERROR:  role "server" does not exist
+2021-03-23 11:46:11.934 EDT [13120] STATEMENT:  ALTER ROLE server WITH CREATEDB;
+2021-03-23 11:47:56.718 EDT [8736] FATAL:  database "server" does not exist
+2021-03-23 11:48:49.591 EDT [21532] FATAL:  database "server" does not exist
+2021-03-23 11:50:02.702 EDT [12964] ERROR:  role "server" already exists
+2021-03-23 11:50:02.702 EDT [12964] STATEMENT:  CREATE ROLE server WITH LOGIN PASSWORD 'jvjye4b66k9ermx7';
+2021-03-23 11:50:42.111 EDT [5132] FATAL:  role "postgres" does not exist
+2021-03-23 11:50:51.522 EDT [18856] FATAL:  database "server" does not exist
+2021-03-23 11:51:58.153 EDT [22416] LOG:  could not open file "postmaster.pid": No such file or directory
+2021-03-23 11:51:58.155 EDT [22416] LOG:  performing immediate shutdown because data directory lock file is invalid
+2021-03-23 11:51:58.156 EDT [22416] LOG:  received immediate shutdown request
+2021-03-23 11:51:58.157 EDT [22416] LOG:  could not open file "postmaster.pid": No such file or directory
+2021-03-23 11:51:58.167 EDT [6000] LOG:  could not open temporary statistics file "pg_stat/global.tmp": No such file or directory
+2021-03-23 11:51:58.167 EDT [12980] WARNING:  terminating connection because of crash of another server process
+2021-03-23 11:51:58.167 EDT [12980] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2021-03-23 11:51:58.167 EDT [12980] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2021-03-23 11:51:58.198 EDT [22416] LOG:  database system is shut down
