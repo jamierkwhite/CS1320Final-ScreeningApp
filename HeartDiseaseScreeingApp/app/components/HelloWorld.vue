@@ -1,0 +1,148 @@
+<template>
+    <Page backgroundColor="#ffcfcc">
+        <!-- #ccf9ff #E4F2FD #bff8ff-->
+        <ActionBar title="Home">
+            <NavigationButton visibility="collapsed" />
+            <ActionItem @tap="onButtonTap" icon="res://home"
+                ios.position="left" android.position="actionBar"></ActionItem>
+            <ActionItem @tap="onTapProfile" icon="res://settings"
+                ios.position="right" android.position="popup"></ActionItem>
+            </ActionItem>
+        </ActionBar>
+        <ScrollView>
+            <StackLayout class="home-panel">
+                <!--Add your page content here-->
+                <Image class="logo" src="~/images/logo_real.png" height="150"
+                    style="margin-bottom: 75px" />
+                <!-- <Label textWrap="true" text="Heart Disease Screening App"
+                    class="h2 description-label" /> -->
+                <GridLayout columns="*, *" rows="*, *, *" height="500">
+                    <!-- backgroundColor="lightgray"> -->
+                    <!-- <Label text="Label 1" row="0" col="0"
+                        backgroundColor="red" style="margin-right: 20px" />
+                    <Label text="Label 2" row="0" col="1"
+                        backgroundColor="green" />
+                    <Label text="Label 3" row="1" col="0"
+                        backgroundColor="blue" />
+                    <Label text="Label 4" row="1" col="1"
+                        backgroundColor="yellow" /> -->
+                    <!-- <Label text="Label 5" row="2" col="0"
+                        backgroundColor="purple" /> 
+                        backgrounds either transparent #E4F2FD #f5f5f5 white or black-->
+                    <FlexboxLayout row="0" col="0" flexDirection="column"
+                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-right: 20px; margin-top: 20px">
+                        <Image src="~/images/scheduling.jpg" height="125"
+                            width="125" style="margin-top: 6px;" />
+                        <Label text="Scheduling" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                    <FlexboxLayout row="0" col="1" flexDirection="column"
+                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-left: 20px; margin-top: 20px">
+                        <Image src="~/images/mileage.jpg" height="125"
+                            width="125" style="margin-top: 6px;" />
+                        <Label text="Mileage" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                    <FlexboxLayout row="1" col="0" flexDirection="column"
+                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-right: 20px; margin-top: 20px">
+                        <Image src="~/images/full_echo.jpg" height="125"
+                            width="125" style="margin-top: 6px;" />
+                        <Label text="Full Echo" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                    <FlexboxLayout row="1" col="1" flexDirection="column"
+                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-left: 20px; margin-top: 20px">
+                        <Image src="~/images/penicillin.jpg" height="125"
+                            width="125" style="margin-top: 6px;" />
+                        <Label text="Penicillin" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                    <FlexboxLayout row="2" col="0" flexDirection="column"
+                        @tap="goTo('newscreen')" backgroundColor="#E4F2FD"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-right: 20px; margin-top: 20px">
+                        <Image src="~/images/screening.jpg" height="125"
+                            width="125" style="margin-top: 6px;" />
+                        <Label text="Screening" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                    <!-- <Label text="Label 6" row="2" col="1"
+                        backgroundColor="pink" /> @tap="onButtonTap"-->
+                    <FlexboxLayout row="2" col="1" flexDirection="column"
+                        @tap="goTo('newreg')" backgroundColor="#E4F2FD"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-left: 20px; margin-top: 20px">
+                        <Image src="~/images/registration.jpg" height="130"
+                            width="130" />
+                        <Label text="Registration" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </Page>
+</template>
+
+<script>
+    import Registration from "./Registration";
+    import NewReg from "./NewReg";
+    import NewScren from "./NewScren";
+    import UserProfile from "./UserProfile";
+
+    export default {
+        data() {
+            return {
+                routes: {
+                    reg: Registration,
+                    newreg: NewReg,
+                    newscreen: NewScren
+                }
+            };
+        },
+        props: ["username"],
+        methods: {
+            onButtonTap() {
+                console.log("Button was pressed");
+            },
+            onTapProfile() {
+                console.log(this.username);
+                this.$navigateTo(UserProfile, {
+                    props: {
+                        username: this.username
+                    }
+                });
+            },
+            goTo(s) {
+                console.log("going to");
+                this.$navigateTo(this.routes[s]);
+            }
+        }
+    };
+</script>
+
+<style scoped>
+    .home-panel {
+        vertical-align: center;
+        font-size: 20;
+        margin: 15;
+    }
+
+    .description-label {
+        margin-bottom: 15;
+        text-align: center;
+    }
+</style>
