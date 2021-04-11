@@ -1,6 +1,6 @@
 <template>
     <Page class="page">
-        <ActionBar title="Screening">
+        <ActionBar title="Penicillin">
             <ActionItem @tap="onButtonTap" icon="res://home"
                 ios.position="right" android.position="actionBar">
             </ActionItem>
@@ -25,12 +25,10 @@
                 patient: {
                     date: "",
                     location: "",
-                    anterior_mitral_valve_leaflet_thickness: "Normal",
-                    posterior_mitral_valve_leaflet_thickness: "Normal",
-                    posterior_mitral_valve_mobility: "Normal",
-                    aortic_valve_thickness: "Normal",
-                    mitral_valve_function: "Normal",
-                    aortic_valve_function: "Normal"
+                    worsening_exercise_intolerance: "No",
+                    poor_pcn_reaction: "No",
+                    injection_given: "No",
+                    comments: ""
                 },
                 patientMetadata: {
                     isReadOnly: false,
@@ -50,46 +48,31 @@
                             editor: "Text"
                         },
                         {
-                            name: "anterior_mitral_valve_leaflet_thickness",
-                            displayName: "Anterior Mitral Valve Leaflet Thickness",
+                            name: "worsening_exercise_intolerance",
+                            displayName: "Worsening Exercise Intolerance",
                             index: 2,
                             editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
+                            valuesProvider: ["Yes", "No"]
                         },
                         {
-                            name: "posterior_mitral_valve_leaflet_thickness",
-                            displayName: "Posterior Mitral Valve Leaflet Thickness",
+                            name: "poor_pcn_reaction",
+                            displayName: "Poor Penicillin Reaction",
                             index: 3,
                             editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
+                            valuesProvider: ["Yes", "No"]
                         },
                         {
-                            name: "posterior_mitral_valve_mobility",
-                            displayName: "Posterior Mitral Valve Mobility",
+                            name: "injection_given",
+                            displayName: "Injection Given",
                             index: 4,
                             editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
+                            valuesProvider: ["Yes", "No"]
                         },
                         {
-                            name: "aortic_valve_thickness",
-                            displayName: "Aortic Valve Thickness",
+                            name: "comments",
+                            displayName: "Comments",
                             index: 5,
-                            editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
-                        },
-                        {
-                            name: "mitral_valve_function",
-                            displayName: "Mitral Valve Function",
-                            index: 6,
-                            editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
-                        },
-                        {
-                            name: "aortic_valve_function",
-                            displayName: "Aortic Valve Function",
-                            index: 7,
-                            editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
+                            editor: "MultilineText"
                         }
                     ]
                 },
@@ -148,7 +131,23 @@
 
     PropertyEditor[type='SegmentedEditor'] DataFormEditorCore {
         border-width: 0;
-        margin: 15;
+        margin: 12;
+    }
+
+    PropertyEditor[type='MultilineText'] DataFormEditorCore {
+        /* margin-top: 15;
+        margin-bottom: 15; */
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 50;
+        padding-bottom: 50;
+    }
+
+    PropertyEditor[type='MultilineText'] DataFormEditorLabel {
+        margin-top: 15;
+        margin-bottom: 15;
+        padding-top: 35;
+        padding-bottom: 35;
     }
 
     .regsubmit {

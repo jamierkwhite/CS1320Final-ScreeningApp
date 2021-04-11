@@ -6,11 +6,36 @@
             </ActionItem>
         </ActionBar>
         <!-- <RadDataForm :source="album" /> -->
-        <StackLayout>
-            <RadDataForm :source="patient" :metadata="patientMetadata"
-                @propertyCommitted="onPropertyCommitted" />
-            <Button text="Submit" @tap="onButtonTap" class="regsubmit" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <GridLayout columns="*, *" rows="*" height="100"
+                    style="margin-bottom: 40px">
+                    <FlexboxLayout row="0" col="0" flexDirection="column"
+                        @tap="takeRegPhoto()" backgroundColor="transparent"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-right: 20px; margin-top: 20px">
+                        <Image src="~/images/camera.png" height="75"
+                            width="75" style="margin-top: 6px;" />
+                        <Label text="Add Patient Picture" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                    <FlexboxLayout row="0" col="1" flexDirection="column"
+                        @tap="takeRegPhoto()" backgroundColor="transparent"
+                        alignItems="center" justifyContent="center"
+                        alignContent="center"
+                        style="margin-right: 20px; margin-top: 20px">
+                        <Image src="~/images/add_doc.png" height="75"
+                            width="75" style="margin-top: 6px;" />
+                        <Label text="Add Consent Forms" color="black"
+                            style="font-weight: bold;" />
+                    </FlexboxLayout>
+                </GridLayout>
+                <RadDataForm :source="patient" :metadata="patientMetadata"
+                    @propertyCommitted="onPropertyCommitted" style="margin-bottom:40px"/>
+                <Button text="Submit" @tap="onButtonTap" class="regsubmit" />
+            </StackLayout>
+        </ScrollView>
     </Page>
 </template>
 
@@ -18,6 +43,8 @@
     import Vue from "nativescript-vue";
     import RadDataForm from "nativescript-ui-dataform/vue";
     Vue.use(RadDataForm);
+    var camera = require("nativescript-camera");
+    var imageModule = require("tns-core-modules/ui/image");
 
     export default {
         data() {
@@ -144,6 +171,18 @@
             },
             onPropertyCommitted(data) {
                 this.committedPerson = data.object.editedObject;
+            },
+            takeRegPhoto() {
+                camera
+                    .takePicture()
+                    .then(function(imageAsset) {
+                        console.log("Result is an image asset instance");
+                        var image = new imageModule.Image();
+                        image.src = imageAsset;
+                    })
+                    .catch(function(err) {
+                        console.log("Error -> " + err.message);
+                    });
             }
         }
     };

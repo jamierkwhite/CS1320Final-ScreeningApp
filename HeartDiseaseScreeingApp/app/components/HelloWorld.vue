@@ -30,7 +30,7 @@
                         backgroundColor="purple" /> 
                         backgrounds either transparent #E4F2FD #f5f5f5 white or black-->
                     <FlexboxLayout row="0" col="0" flexDirection="column"
-                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        @tap="goTo('comesoon')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-right: 20px; margin-top: 20px">
@@ -40,7 +40,7 @@
                             style="font-weight: bold;" />
                     </FlexboxLayout>
                     <FlexboxLayout row="0" col="1" flexDirection="column"
-                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        @tap="goTo('comesoon')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-left: 20px; margin-top: 20px">
@@ -50,7 +50,7 @@
                             style="font-weight: bold;" />
                     </FlexboxLayout>
                     <FlexboxLayout row="1" col="0" flexDirection="column"
-                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        @tap="goTo('advscreen')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-right: 20px; margin-top: 20px">
@@ -60,7 +60,7 @@
                             style="font-weight: bold;" />
                     </FlexboxLayout>
                     <FlexboxLayout row="1" col="1" flexDirection="column"
-                        @tap="goTo('reg')" backgroundColor="#E4F2FD"
+                        @tap="goTo('pcnscreen')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-left: 20px; margin-top: 20px">
@@ -101,7 +101,10 @@
     import Registration from "./Registration";
     import NewReg from "./NewReg";
     import NewScren from "./NewScren";
+    import AdvancedScreening from "./AdvancedScreening";
+    import PenicillinScreen from "./PenicillinScreen";
     import UserProfile from "./UserProfile";
+    import ComingSoon from "./ComingSoon";
 
     export default {
         data() {
@@ -109,7 +112,10 @@
                 routes: {
                     reg: Registration,
                     newreg: NewReg,
-                    newscreen: NewScren
+                    newscreen: NewScren,
+                    advscreen: AdvancedScreening,
+                    pcnscreen: PenicillinScreen,
+                    comesoon: ComingSoon
                 }
             };
         },

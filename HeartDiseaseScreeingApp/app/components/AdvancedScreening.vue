@@ -1,16 +1,17 @@
 <template>
     <Page class="page">
-        <ActionBar title="Screening">
+        <ActionBar title="Full Echo">
             <ActionItem @tap="onButtonTap" icon="res://home"
                 ios.position="right" android.position="actionBar">
             </ActionItem>
         </ActionBar>
-        <!-- <RadDataForm :source="album" /> -->
-        <StackLayout>
-            <RadDataForm :source="patient" :metadata="patientMetadata"
-                @propertyCommitted="onPropertyCommitted" />
-            <Button text="Submit" @tap="onButtonTap" class="regsubmit" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <RadDataForm :source="patient" :metadata="patientMetadata"
+                    @propertyCommitted="onPropertyCommitted" />
+                <Button text="Submit" @tap="onButtonTap" class="regsubmit" />
+            </StackLayout>
+        </ScrollView>
     </Page>
 </template>
 
@@ -30,7 +31,10 @@
                     posterior_mitral_valve_mobility: "Normal",
                     aortic_valve_thickness: "Normal",
                     mitral_valve_function: "Normal",
-                    aortic_valve_function: "Normal"
+                    anterior_mitral_valve_mobility: "Normal",
+                    mitral_regurgitation: "> 1.5cm",
+                    aortic_valve_function: "Normal",
+                    aortic_regurgitation: "> 1.5cm"
                 },
                 patientMetadata: {
                     isReadOnly: false,
@@ -85,11 +89,32 @@
                             valuesProvider: ["Normal", "Abnormal"]
                         },
                         {
-                            name: "aortic_valve_function",
-                            displayName: "Aortic Valve Function",
+                            name: "anterior_mitral_valve_mobility",
+                            displayName: "Anterior Mitral Valve Mobility",
                             index: 7,
                             editor: "SegmentedEditor",
                             valuesProvider: ["Normal", "Abnormal"]
+                        },
+                        {
+                            name: "mitral_regurgitation",
+                            displayName: "Mitral Regurgitation",
+                            index: 8,
+                            editor: "SegmentedEditor",
+                            valuesProvider: ["> 1.5cm", "< 1.5cm"]
+                        },
+                        {
+                            name: "aortic_valve_function",
+                            displayName: "Aortic Valve Function",
+                            index: 9,
+                            editor: "SegmentedEditor",
+                            valuesProvider: ["Normal", "Abnormal"]
+                        },
+                        {
+                            name: "aortic_regurgitation",
+                            displayName: "Aortic Regurgitation",
+                            index: 10,
+                            editor: "SegmentedEditor",
+                            valuesProvider: ["> 1.5cm", "< 1.5cm "]
                         }
                     ]
                 },
@@ -148,7 +173,7 @@
 
     PropertyEditor[type='SegmentedEditor'] DataFormEditorCore {
         border-width: 0;
-        margin: 15;
+        margin: 12;
     }
 
     .regsubmit {
