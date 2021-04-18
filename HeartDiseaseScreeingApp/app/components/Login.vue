@@ -95,7 +95,7 @@
 
                 // EXAMPLE POST REQUEST TO LOGIN
                 Http.request({
-                    url: "https://heroku.com/login",
+                    url: "https://rhd-screening.herokuapp.com/login",
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

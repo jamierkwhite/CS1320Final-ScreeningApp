@@ -178,7 +178,7 @@
 
                 // EXAMPLE POST REQUEST TO REGISTER PATIENT
                 Http.request({
-                        url: "https://heroku.com/register",
+                        url: "https://rhd-screening.herokuapp.com/register",
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
