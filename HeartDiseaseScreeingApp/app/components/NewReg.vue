@@ -32,7 +32,8 @@
                     </FlexboxLayout>
                 </GridLayout>
                 <RadDataForm :source="patient" :metadata="patientMetadata"
-                    @propertyCommitted="onPropertyCommitted" style="margin-bottom:40px"/>
+                    @propertyCommitted="onPropertyCommitted"
+                    style="margin-bottom:40px" />
                 <Button text="Submit" @tap="onButtonTap" class="regsubmit" />
             </StackLayout>
         </ScrollView>
@@ -45,6 +46,10 @@
     Vue.use(RadDataForm);
     var camera = require("nativescript-camera");
     var imageModule = require("tns-core-modules/ui/image");
+    import {
+        Http,
+        HttpResponse
+    } from "@nativescript/core";
 
     export default {
         data() {
@@ -165,10 +170,50 @@
                 committedPerson: {}
             };
         },
+        props: ["token"],
         methods: {
             onButtonTap() {
+                // LOGS THE PATIENT REGISTRATION DATA THAT HAS BEEN INPUTTED
                 console.log(this.committedPerson);
+
+                // EXAMPLE POST REQUEST TO REGISTER PATIENT
+                Http.request({
+                        url: "https://heroku.com/register",
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        content: JSON.stringify({
+                            token: this.token,
+                            patientinfo: this.committedPerson
+                        })
+                    }).then(response => {
+                        const result = response.content.toJSON();
+                        console.log(`Http POST Result: ${result}`);
+                        this.$navigateTo(HelloWorld, {
+                            props: {
+                                token: this.token
+                            }
+                        });
+                    },
+                    function(e) {
+                        console.log("Error: " + e.message);
+                        this.alert("Error: " + e.message); //e.statusCode
+                    });
             },
+            //     then((response: HttpResponse) => {
+            //         const result = response.content.toJSON();
+            //         console.log(`Http POST Result: ${result}`);
+            //         this.$navigateTo(HelloWorld, {
+            //             props: {
+            //                 token: this.token
+            //             }
+            //         });
+            //     }, e => {
+            //         console.log(e);
+            //         this.alert(e);
+            //     });
+            // },
             onPropertyCommitted(data) {
                 this.committedPerson = data.object.editedObject;
             },

@@ -30,7 +30,7 @@
                         backgroundColor="purple" /> 
                         backgrounds either transparent #E4F2FD #f5f5f5 white or black-->
                     <FlexboxLayout row="0" col="0" flexDirection="column"
-                        @tap="goTo('comesoon')" backgroundColor="#E4F2FD"
+                        @tap="goTo('patsearch')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-right: 20px; margin-top: 20px">
@@ -105,6 +105,7 @@
     import PenicillinScreen from "./PenicillinScreen";
     import UserProfile from "./UserProfile";
     import ComingSoon from "./ComingSoon";
+    import PatientSearch from "./PatientSearch";
 
     export default {
         data() {
@@ -115,11 +116,12 @@
                     newscreen: NewScren,
                     advscreen: AdvancedScreening,
                     pcnscreen: PenicillinScreen,
-                    comesoon: ComingSoon
+                    comesoon: ComingSoon,
+                    patsearch: PatientSearch
                 }
             };
         },
-        props: ["username"],
+        props: ["username", "token"],
         methods: {
             onButtonTap() {
                 console.log("Button was pressed");
@@ -133,8 +135,17 @@
                 });
             },
             goTo(s) {
-                console.log("going to");
-                this.$navigateTo(this.routes[s]);
+                console.log("going to page");
+                if (s === "newreg") {
+                    this.$navigateTo(this.routes["newreg"], {
+                        props: {
+                            token: this.token
+                        }
+                    });
+                } else {
+                    this.$navigateTo(this.routes[s]);
+                }
+                // this.$navigateTo(this.routes[s]);
             }
         }
     };

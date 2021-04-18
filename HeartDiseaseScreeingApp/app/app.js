@@ -16,3 +16,7 @@ new Vue({
         Login
     }
 }).$start();
+
+// new Vue({
+//     render: (h) => h('frame', [h(Login)]),
+//   }).$start()

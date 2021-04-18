@@ -5,11 +5,11 @@
         </ActionBar>
         <StackLayout class="form">
             <Image class="logo" src="~/images/logo2.png" />
-            <Label class="header" text="Heart Disease Screening App"></Label>
+            <Label class="header" text="RHDScreen"></Label>
             <StackLayout class="input-field">
-                <TextField ref="email" class="input" hint="Email"
+                <TextField ref="username" class="input" hint="Username"
                     keyboardType="email" autocorrect="false"
-                    autocapitalizationType="none" v-model="user.email"
+                    autocapitalizationType="none" v-model="user.username"
                     returnKeyType="next" @returnPress="focusPassword()">
                 </TextField>
                 <StackLayout class="hr-light"></StackLayout>
@@ -52,6 +52,10 @@
     import HelloWorld from "./HelloWorld";
     import UserRegistration from "./UserRegistration";
     import {
+        Http,
+        HttpResponse
+    } from "@nativescript/core";
+    import {
         isIOS
     } from "tns-core-modules/platform";
     import {
@@ -62,7 +66,7 @@
         data() {
             return {
                 user: {
-                    email: null,
+                    username: null,
                     password: null
                 },
                 isLoggingIn: true
@@ -74,22 +78,62 @@
                 //PAGE LOADED
             },
             submit() {
-                if (!this.user.email || !this.user.password) {
+                if (!this.user.username || !this.user.password) {
                     this.alert(
-                        "Please provide both an email address and password."
-                    );
+                    "Please provide both a username and password.");
                     return;
                 }
                 this.login();
             },
             login() {
                 // ADD YOUR OWN CODE
-                this.$navigateTo(HelloWorld, {
-                    props: {
-                        username: this.user.email
+                // this.$navigateTo(HelloWorld, {
+                //     props: {
+                //         username: this.user.username
+                //     }
+                // });
+
+                // EXAMPLE POST REQUEST TO LOGIN
+                Http.request({
+                    url: "https://heroku.com/login",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    content: JSON.stringify({
+                        username: this.user.username,
+                        password: this.user.password
+                    })
+                }).then(response => {
+                        const result = response.content.toJSON();
+                        console.log(`Http POST Result: ${result}`);
+                        this.$navigateTo(HelloWorld, {
+                            props: {
+                                username: this.user.username,
+                                token: result.token
+                            }
+                        });
+                    },
+                    e => {
+                        console.log(e);
+                        this.alert("Invalid username and/or password.");
                     }
-                });
+                );
             },
+            //     then((response: HttpResponse) => {
+            //         const result = response.content.toJSON();
+            //         console.log(`Http POST Result: ${result}`);
+            //         this.$navigateTo(HelloWorld, {
+            //             props: {
+            //                 username: this.user.username,
+            //                 token: result.token
+            //             }
+            //         });
+            //     }, e => {
+            //         console.log(e);
+            //         this.alert("Invalid username and/or password.");
+            //     });
+            // },
             forgotPassword() {
                 prompt({
                     title: "Forgot Password",
@@ -109,7 +153,7 @@
             },
             alert(message) {
                 return alert({
-                    title: "Heart Disease Screening App",
+                    title: "RHDScreen",
                     okButtonText: "OK",
                     message: message
                 });

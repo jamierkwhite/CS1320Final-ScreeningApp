@@ -2,7 +2,7 @@
     <Page @loaded="pageLoaded" class="page">
         <StackLayout class="form">
             <Image class="logo" src="~/images/logo2.png" />
-            <Label class="header" text="Heart Disease Screening App"></Label>
+            <Label class="header" text="RHDScreen"></Label>
             <StackLayout class="input-field">
                 <TextField ref="email" class="input" hint="Email"
                     keyboardType="email" autocorrect="false"
@@ -99,7 +99,7 @@
             },
             alert(message) {
                 return alert({
-                    title: "Heart Disease Screening App",
+                    title: "RHDScreen",
                     okButtonText: "OK",
                     message: message
                 });
