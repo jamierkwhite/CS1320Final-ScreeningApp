@@ -6,24 +6,24 @@ All members met and discussed design 3 times at beggining of assignment
 
 
 Jamie:
-	* Wrote page 1 of prototype
-	* Wrote the entire backend (all contents of cs1320_backend and deployment work)
-	* Wrote initial team meeting report
-	* Wrote client report
-	* Gave elevator speech 
-	* Wrote client feedback report
+* Wrote page 1 of prototype
+* Wrote the entire backend (all contents of cs1320_backend and deployment work)
+* Wrote initial team meeting report
+* Wrote client report
+* Gave elevator speech 
+* Wrote client feedback report
 
 Isaac:
-	* Wrote entire front end (all other parts of repo)
-	* Wrote virtual poster
-	* Wrote initial client report
-	* Wrote project testing report
+* Wrote entire front end (all other parts of repo)
+* Wrote virtual poster
+* Wrote initial client report
+* Wrote project testing report
 
 
 Fatimah:
-	* Wrote database schemas to be used for backend
-	* Wrote project testing report
+* Wrote database schemas to be used for backend
+* Wrote project testing report
 
 Wambui:
-	* Wrote page 2 of prototype
+* Wrote page 2 of prototype
 
