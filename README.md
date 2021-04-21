@@ -8,7 +8,7 @@ Jamie:
 	Wrote the entire backend (all contents of cs1320_backend and deployment work)
 	Wrote initial team meeting report
 	Wrote client report
-	Gave elevator speech
+	Gave elevator speech 
 	Wrote client feedback report
 
 Isaac:
