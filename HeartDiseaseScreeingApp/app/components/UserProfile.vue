@@ -10,17 +10,21 @@
             <FlexboxLayout flexDirection="row" alignItems="center"
                 justifyContent="center" alignContent="center">
                 <Label text="username: " class="description-label-profile" />
-                <Label :text="this.username"
+                <!-- <Label :text="this.username"
+                    class="description-label-profile" /> -->
+                <Label text="developer"
                     class="description-label-profile" />
             </FlexboxLayout>
             <Label text="Check back later for more information"
                 class="description-label-profile"
                 style="color: darkgray; margin-top:100" />
+            <Label text="Logout" class="logout" @tap="gotoLogin()"></Label>
         </StackLayout>
     </Page>
 </template>
 
 <script>
+    import Login from "./Login";
     export default {
         data() {
             return {};
@@ -29,6 +33,9 @@
         methods: {
             onButtonTap() {
                 console.log("Button was pressed");
+            },
+            gotoLogin() {
+                this.$navigateTo(Login);
             }
         }
     };
@@ -52,5 +59,14 @@
         margin-bottom: 15;
         text-align: center;
         font-size: 20;
+    }
+
+    .logout {
+        margin-bottom: 15;
+        margin-top: 50;
+        color: gray;
+        text-align: center;
+        font-size: 20;
+        font-weight: bold;
     }
 </style>

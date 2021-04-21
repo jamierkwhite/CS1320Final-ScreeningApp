@@ -4,9 +4,9 @@
             <Image class="logo" src="~/images/logo2.png" />
             <Label class="header" text="RHDScreen"></Label>
             <StackLayout class="input-field">
-                <TextField ref="email" class="input" hint="Email"
+                <TextField ref="username" class="input" hint="Username"
                     keyboardType="email" autocorrect="false"
-                    autocapitalizationType="none" v-model="user.email"
+                    autocapitalizationType="none" v-model="user.username"
                     returnKeyType="next" @returnPress="focusPassword()">
                 </TextField>
                 <StackLayout class="hr-light"></StackLayout>
@@ -18,9 +18,17 @@
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
             <StackLayout class="input-field">
-                <TextField ref="password" id="password" class="input"
-                    hint="Confirm Password" secure="true"
-                    v-model="user.confirmpassword" returnKeyType="done">
+                <TextField ref="confirmpassword" id="confirmpassword"
+                    class="input" hint="Confirm Password" secure="true"
+                    v-model="user.confirmpassword" returnKeyType="next">
+                </TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+            <StackLayout class="input-field">
+                <TextField ref="registrationCode" id="registrationCode"
+                    class="input" hint="Registration Code"
+                    autocorrect="false" autocapitalizationType="none"
+                    v-model="user.registrationCode" returnKeyType="done">
                 </TextField>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
@@ -52,8 +60,10 @@
         data() {
             return {
                 user: {
-                    email: null,
-                    password: null
+                    username: null,
+                    password: null,
+                    confirmpassword: null,
+                    registrationCode: null
                 },
                 isLoggingIn: true
             };
@@ -64,14 +74,17 @@
                 //PAGE LOADED
             },
             submit() {
-                if (!this.user.email || !this.user.password) {
+                if (!this.user.username || !this.user.password) {
                     this.alert(
-                        "Please provide both an email address and password."
-                    );
+                    "Please provide both a username and password.");
                     return;
                 }
                 if (this.user.password !== this.user.confirmpassword) {
                     this.alert("Passwords do not match.");
+                    return;
+                }
+                if (this.user.registrationCode !== "Rc9ZEw") {
+                    this.alert("Invalid Registration Code");
                     return;
                 }
                 this.login();

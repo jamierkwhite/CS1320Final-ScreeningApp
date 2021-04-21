@@ -50,6 +50,19 @@
         Http,
         HttpResponse
     } from "@nativescript/core";
+    import HelloWorld from "./HelloWorld";
+
+    import {
+        fromFile,
+        ImageSource,
+        fromAsset
+    } from "tns-core-modules/image-source";
+    import {
+        ImageAsset
+    } from "image-asset";
+    var fs = require("file-system");
+    var bghttpModule = require("nativescript-background-http");
+    var session = bghttpModule.session("image-upload");
 
     export default {
         data() {
@@ -57,19 +70,19 @@
                 patient: {
                     first_name: "",
                     last_name: "",
-                    dob: null,
+                    birth_date: null,
                     age: null,
-                    school: "",
+                    school_name: "",
                     standard: null,
                     village: "",
                     sub_county: "",
                     church: "",
-                    home: "",
+                    childrens_Home: "",
                     care_taker: "",
                     father: "",
                     mother: "",
-                    phone1: null,
-                    phone2: null
+                    care_taker_phone: null,
+                    alternate_phone: null
                 },
                 patientMetadata: {
                     isReadOnly: false,
@@ -88,7 +101,7 @@
                             editor: "Text"
                         },
                         {
-                            name: "dob",
+                            name: "birth_date",
                             displayName: "Date of Birth",
                             index: 2,
                             editor: "DatePicker"
@@ -100,7 +113,7 @@
                             editor: "Number"
                         },
                         {
-                            name: "school",
+                            name: "school_name",
                             displayName: "School",
                             index: 4,
                             editor: "Text"
@@ -130,7 +143,7 @@
                             editor: "Text"
                         },
                         {
-                            name: "home",
+                            name: "childrens_Home",
                             displayName: "Home Location",
                             index: 9,
                             editor: "Text"
@@ -154,13 +167,13 @@
                             editor: "Text"
                         },
                         {
-                            name: "phone1",
+                            name: "care_taker_phone",
                             displayName: "Primary Phone",
                             index: 13,
                             editor: "Phone"
                         },
                         {
-                            name: "phone2",
+                            name: "alternate_phone",
                             displayName: "Alternate Phone",
                             index: 14,
                             editor: "Phone"
@@ -170,7 +183,7 @@
                 committedPerson: {}
             };
         },
-        props: ["token"],
+        props: ["token", "username"],
         methods: {
             onButtonTap() {
                 // LOGS THE PATIENT REGISTRATION DATA THAT HAS BEEN INPUTTED
@@ -178,20 +191,24 @@
 
                 // EXAMPLE POST REQUEST TO REGISTER PATIENT
                 Http.request({
-                        url: "https://rhd-screening.herokuapp.com/register",
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        content: JSON.stringify({
-                            token: this.token,
-                            patientinfo: this.committedPerson
-                        })
-                    }).then(response => {
-                        const result = response.content.toJSON();
-                        console.log(`Http POST Result: ${result}`);
+                    url: "https://rhd-screening.herokuapp.com/register",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    content: JSON.stringify({
+                        token: this.token,
+                        patient_info: this.committedPerson
+                    })
+                }).then(
+                    response => {
+                        // console.log(response);
+                        // console.log(response.content.toString());
+                        // const result = response.content.toJSON();
+                        // console.log(`Http POST Result: ${result}`);
                         this.$navigateTo(HelloWorld, {
                             props: {
+                                username: this.username,
                                 token: this.token
                             }
                         });
@@ -199,7 +216,8 @@
                     function(e) {
                         console.log("Error: " + e.message);
                         this.alert("Error: " + e.message); //e.statusCode
-                    });
+                    }
+                );
             },
             //     then((response: HttpResponse) => {
             //         const result = response.content.toJSON();
@@ -224,6 +242,41 @@
                         console.log("Result is an image asset instance");
                         var image = new imageModule.Image();
                         image.src = imageAsset;
+                        // var img;
+                        // var myImageSource: ImageSource;
+                        // fromAsset(imageAsset).then(res => {
+                        //     myImageSource = res;
+                        //     console.log(myImageSource);
+                        // });
+                        // var path = fs.path.join("~/images/", "TestHeadshot.png");
+                        // var saved = myImageSource.saveToFile(path, "png");
+                        // console.log(saved);
+                        // var path = fs.path.join("~/images/",
+                        //     "TestHeadshot.png");
+                        // var saved = image.saveToFile(path, "png");
+                        // let source = new imageSourceModule.ImageSource();
+                        // source.fromAsset(imageAsset).then(source => {
+                        //     console.log(
+                        //         `Size: ${source.width}x${source.height}`
+                        //         );
+                        //     console.log("image source");
+                        //     console.log(source);
+                        //     console.log("source to base64");
+                        //     console.log(source.toBase64String(
+                        //         "png"));
+                        // });
+                        // const b64img = image.src.toBase64String("png");
+                        // var request = {
+                        //     url: "https://rhd-screening.herokuapp.com/add_headshot",
+                        //     method: "POST",
+                        //     headers: {
+                        //         "Content-Type": "application/octet-stream",
+                        //         "File-Name": "TestHeadshot.png"
+                        //     },
+                        //     description: "{ 'uploading': " +
+                        //         "TestHeadshot.png" + " }"
+                        // };
+                        // var task = session.uploadFile(path, request);
                     })
                     .catch(function(err) {
                         console.log("Error -> " + err.message);

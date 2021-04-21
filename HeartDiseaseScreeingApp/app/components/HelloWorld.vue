@@ -50,7 +50,7 @@
                             style="font-weight: bold;" />
                     </FlexboxLayout>
                     <FlexboxLayout row="1" col="0" flexDirection="column"
-                        @tap="goTo('advscreen')" backgroundColor="#E4F2FD"
+                        @tap="goTo('patsearchecho')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-right: 20px; margin-top: 20px">
@@ -60,7 +60,7 @@
                             style="font-weight: bold;" />
                     </FlexboxLayout>
                     <FlexboxLayout row="1" col="1" flexDirection="column"
-                        @tap="goTo('pcnscreen')" backgroundColor="#E4F2FD"
+                        @tap="goTo('patsearchpcn')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-left: 20px; margin-top: 20px">
@@ -70,9 +70,9 @@
                             style="font-weight: bold;" />
                     </FlexboxLayout>
                     <FlexboxLayout row="2" col="0" flexDirection="column"
-                        @tap="goTo('newscreen')" backgroundColor="#E4F2FD"
-                        alignItems="center" justifyContent="center"
-                        alignContent="center"
+                        @tap="goTo('patsearchscreen')"
+                        backgroundColor="#E4F2FD" alignItems="center"
+                        justifyContent="center" alignContent="center"
                         style="margin-right: 20px; margin-top: 20px">
                         <Image src="~/images/screening.jpg" height="125"
                             width="125" style="margin-top: 6px;" />
@@ -106,6 +106,10 @@
     import UserProfile from "./UserProfile";
     import ComingSoon from "./ComingSoon";
     import PatientSearch from "./PatientSearch";
+    import PatientSearchScreen from "./PatientSearchScreen2";
+    import PatientSearchEcho from "./PatientSearchEcho";
+    import PatientSearchPCN from "./PatientSearchPCN";
+    const userntoken = require("./UserTokenMap.js");
 
     export default {
         data() {
@@ -117,7 +121,10 @@
                     advscreen: AdvancedScreening,
                     pcnscreen: PenicillinScreen,
                     comesoon: ComingSoon,
-                    patsearch: PatientSearch
+                    patsearch: PatientSearch,
+                    patsearchscreen: PatientSearchScreen,
+                    patsearchecho: PatientSearchEcho,
+                    patsearchpcn: PatientSearchPCN
                 }
             };
         },
@@ -125,6 +132,7 @@
         methods: {
             onButtonTap() {
                 console.log("Button was pressed");
+                console.log(userntoken);
             },
             onTapProfile() {
                 console.log(this.username);
@@ -139,11 +147,17 @@
                 if (s === "newreg") {
                     this.$navigateTo(this.routes["newreg"], {
                         props: {
-                            token: this.token
+                            token: this.token,
+                            username: this.username
                         }
                     });
                 } else {
-                    this.$navigateTo(this.routes[s]);
+                    this.$navigateTo(this.routes[s], {
+                        props: {
+                            username: this.username,
+                            token: this.token
+                        }
+                    });
                 }
                 // this.$navigateTo(this.routes[s]);
             }

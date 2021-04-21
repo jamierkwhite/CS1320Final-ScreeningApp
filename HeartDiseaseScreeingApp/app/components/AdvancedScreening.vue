@@ -28,13 +28,14 @@
                     location: "",
                     anterior_mitral_valve_leaflet_thickness: "Normal",
                     posterior_mitral_valve_leaflet_thickness: "Normal",
+                    anterior_mitral_valve_mobility: "Normal",
                     posterior_mitral_valve_mobility: "Normal",
                     aortic_valve_thickness: "Normal",
-                    mitral_valve_function: "Normal",
-                    anterior_mitral_valve_mobility: "Normal",
-                    mitral_regurgitation: "> 1.5cm",
                     aortic_valve_function: "Normal",
-                    aortic_regurgitation: "> 1.5cm"
+                    mitral_valve_function: "Normal",
+                    aortic_regurgitation: "> 1.5cm",
+                    mitral_regurgitation: "> 1.5cm",
+                    comments: ""
                 },
                 patientMetadata: {
                     isReadOnly: false,
@@ -68,53 +69,59 @@
                             valuesProvider: ["Normal", "Abnormal"]
                         },
                         {
+                            name: "anterior_mitral_valve_mobility",
+                            displayName: "Anterior Mitral Valve Mobility",
+                            index: 4,
+                            editor: "SegmentedEditor",
+                            valuesProvider: ["Normal", "Abnormal"]
+                        },
+                        {
                             name: "posterior_mitral_valve_mobility",
                             displayName: "Posterior Mitral Valve Mobility",
-                            index: 4,
+                            index: 5,
                             editor: "SegmentedEditor",
                             valuesProvider: ["Normal", "Abnormal"]
                         },
                         {
                             name: "aortic_valve_thickness",
                             displayName: "Aortic Valve Thickness",
-                            index: 5,
+                            index: 6,
+                            editor: "SegmentedEditor",
+                            valuesProvider: ["Normal", "Abnormal"]
+                        },
+                        {
+                            name: "aortic_valve_function",
+                            displayName: "Aortic Valve Function",
+                            index: 7,
                             editor: "SegmentedEditor",
                             valuesProvider: ["Normal", "Abnormal"]
                         },
                         {
                             name: "mitral_valve_function",
                             displayName: "Mitral Valve Function",
-                            index: 6,
-                            editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
-                        },
-                        {
-                            name: "anterior_mitral_valve_mobility",
-                            displayName: "Anterior Mitral Valve Mobility",
-                            index: 7,
-                            editor: "SegmentedEditor",
-                            valuesProvider: ["Normal", "Abnormal"]
-                        },
-                        {
-                            name: "mitral_regurgitation",
-                            displayName: "Mitral Regurgitation",
                             index: 8,
-                            editor: "SegmentedEditor",
-                            valuesProvider: ["> 1.5cm", "< 1.5cm"]
-                        },
-                        {
-                            name: "aortic_valve_function",
-                            displayName: "Aortic Valve Function",
-                            index: 9,
                             editor: "SegmentedEditor",
                             valuesProvider: ["Normal", "Abnormal"]
                         },
                         {
                             name: "aortic_regurgitation",
                             displayName: "Aortic Regurgitation",
-                            index: 10,
+                            index: 9,
                             editor: "SegmentedEditor",
                             valuesProvider: ["> 1.5cm", "< 1.5cm "]
+                        },
+                        {
+                            name: "mitral_regurgitation",
+                            displayName: "Mitral Regurgitation",
+                            index: 10,
+                            editor: "SegmentedEditor",
+                            valuesProvider: ["> 1.5cm", "< 1.5cm"]
+                        },
+                        {
+                            name: "comments",
+                            displayName: "Comments",
+                            index: 11,
+                            editor: "MultilineText"
                         }
                     ]
                 },
