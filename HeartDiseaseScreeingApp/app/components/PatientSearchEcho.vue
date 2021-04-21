@@ -1,7 +1,7 @@
 <template>
     <Page class="page">
         <ActionBar title="Patient Search">
-            <ActionItem @tap="onButtonTap" icon="res://home"
+            <ActionItem @tap="onButtonTap2" icon="res://home"
                 ios.position="right" android.position="actionBar">
             </ActionItem>
         </ActionBar>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+    import HelloWorld from "./HelloWorld";
     import EchoWPatient from "./EchoWPatient";
     var view = require("ui/core/view");
     import * as utils from "tns-core-modules/utils/utils";
@@ -117,6 +118,18 @@
                 if (isAndroid) {
                     utils.ad.dismissSoftInput();
                 }
+            },
+
+            onButtonTap2() {
+                console.log("Button was pressed");
+                console.log(this.username);
+                console.log(this.token);
+                this.$navigateTo(HelloWorld, {
+                    props: {
+                        username: this.username,
+                        token: this.token
+                    }
+                });
             },
 
             onItemTap: function(args) {

@@ -35,6 +35,7 @@
         methods: {
             onButtonTap() {
                 console.log("Button was pressed");
+                this.$navigateBack();
             },
             gotoLogin() {
                 this.$navigateTo(Login);

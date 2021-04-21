@@ -1,5 +1,5 @@
 <template>
-    <Page @loaded="pageLoaded" class="page">
+    <Page class="page">
         <StackLayout class="form">
             <Image class="logo" src="~/images/logo2.png" />
             <Label class="header" text="RHDScreen"></Label>
@@ -68,11 +68,7 @@
                 isLoggingIn: true
             };
         },
-        created() {},
         methods: {
-            pageLoaded() {
-                //PAGE LOADED
-            },
             submit() {
                 if (!this.user.username || !this.user.password) {
                     this.alert(
@@ -181,7 +177,4 @@
         font-size: 16;
     }
 
-    .bold {
-        color: #000000;
-    }
 </style>

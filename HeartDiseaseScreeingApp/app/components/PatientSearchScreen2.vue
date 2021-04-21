@@ -67,6 +67,7 @@
 </template>
 
 <script>
+    import HelloWorld from "./HelloWorld";
     import ScreenWPatient from "./ScreenWPatient2";
     var view = require("ui/core/view");
     import * as utils from "tns-core-modules/utils/utils";
@@ -136,6 +137,12 @@
                 console.log("Button was pressed");
                 console.log(this.username);
                 console.log(this.token);
+                this.$navigateTo(HelloWorld, {
+                    props: {
+                        username: this.username,
+                        token: this.token
+                    }
+                });
             },
 
             onFilterTap() {

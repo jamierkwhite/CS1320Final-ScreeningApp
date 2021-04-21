@@ -1,5 +1,5 @@
 <template>
-    <Page @loaded="pageLoaded" class="page">
+    <Page class="page">
         <ActionBar title="Login">
             <NavigationButton visibility="collapsed" />
         </ActionBar>
@@ -34,15 +34,6 @@
                     </Span>
                 </FormattedString>
             </Label>
-            <Label @tap="toggleForm()" v-if="!isLoggingIn"
-                class="sign-up-group">
-                <FormattedString>
-                    <Span text="Back to Login" class="sign-up-label-bold">
-                    </Span>
-                    <Span text="" class="sign-up-label-bold">
-                    </Span>
-                </FormattedString>
-            </Label>
         </StackLayout>
 
 
@@ -73,11 +64,7 @@
                 isLoggingIn: true
             };
         },
-        created() {},
         methods: {
-            pageLoaded() {
-                //PAGE LOADED
-            },
             submit() {
                 if (!this.user.username || !this.user.password) {
                     this.alert(
@@ -129,18 +116,9 @@
                     });
             },
             forgotPassword() {
-                prompt({
-                    title: "Forgot Password",
-                    message: "Enter the email address you used to register for this app to reset your password.",
-                    inputType: "email",
-                    defaultText: "",
-                    okButtonText: "Ok",
-                    cancelButtonText: "Cancel"
-                }).then(data => {
-                    if (data.result) {
-                        console.log("email address entered")
-                    }
-                });
+                this.alert(
+                    "Please contact your system administrator to reset your password."
+                );
             },
             focusPassword() {
                 this.$refs.password.nativeView.focus();
@@ -229,9 +207,5 @@
         font-weight: bold;
         color: #808080;
         font-size: 16;
-    }
-
-    .bold {
-        color: #000000;
     }
 </style>

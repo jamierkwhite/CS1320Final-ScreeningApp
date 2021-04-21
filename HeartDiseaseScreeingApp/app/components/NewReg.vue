@@ -1,7 +1,7 @@
 <template>
     <Page class="page">
         <ActionBar title="Registration">
-            <ActionItem @tap="onButtonTap" icon="res://home"
+            <ActionItem @tap="goHome" icon="res://home"
                 ios.position="right" android.position="actionBar">
             </ActionItem>
         </ActionBar>
@@ -204,11 +204,14 @@
                     })
                 }).then(
                     response => {
-                        this.$navigateTo(HelloWorld, {
-                            props: {
-                                username: this.username,
-                                token: this.token
-                            }
+                        let self = this;
+                        alert({
+                            title: "RHDScreen",
+                            okButtonText: "go home",
+                            message: "Patient Registered Successfully!"
+                        }).then(function() {
+                            console.log("going home");
+                            self.goHome();
                         });
                     },
                     function(e) {
@@ -216,6 +219,16 @@
                         this.alert("Error: " + e.message); //e.statusCode
                     }
                 );
+            },
+
+            goHome() {
+                console.log("really going home");
+                this.$navigateTo(HelloWorld, {
+                    props: {
+                        username: this.username,
+                        token: this.token
+                    }
+                });
             },
 
             onPropertyCommitted(data) {
