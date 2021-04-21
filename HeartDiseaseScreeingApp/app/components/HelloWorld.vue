@@ -81,14 +81,9 @@
 </template>
 
 <script>
-    import Registration from "./Registration";
     import NewReg from "./NewReg";
-    import NewScren from "./NewScren";
-    import AdvancedScreening from "./AdvancedScreening";
-    import PenicillinScreen from "./PenicillinScreen";
     import UserProfile from "./UserProfile";
     import ComingSoon from "./ComingSoon";
-    import PatientSearch from "./PatientSearch";
     import PatientSearchScreen from "./PatientSearchScreen2";
     import PatientSearchEcho from "./PatientSearchEcho";
     import PatientSearchPCN from "./PatientSearchPCN";
@@ -98,13 +93,8 @@
         data() {
             return {
                 routes: {
-                    reg: Registration,
                     newreg: NewReg,
-                    newscreen: NewScren,
-                    advscreen: AdvancedScreening,
-                    pcnscreen: PenicillinScreen,
                     comesoon: ComingSoon,
-                    patsearch: PatientSearch,
                     patsearchscreen: PatientSearchScreen,
                     patsearchecho: PatientSearchEcho,
                     patsearchpcn: PatientSearchPCN
