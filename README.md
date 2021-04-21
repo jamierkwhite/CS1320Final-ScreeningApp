@@ -3,6 +3,8 @@ Backend: no startup needed as it's deployed
 
 Prototype link: https://www.figma.com/file/buew6I64tqyVdLXMLI6fYB/Screening-App?node-id=0%3A1
 All members met and discussed design 3 times at beggining of assignment
+
+
 Jamie:
 	Wrote page 1 of prototype
 	Wrote the entire backend (all contents of cs1320_backend and deployment work)
