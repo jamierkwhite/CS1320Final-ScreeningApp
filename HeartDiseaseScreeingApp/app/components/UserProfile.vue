@@ -10,10 +10,9 @@
             <FlexboxLayout flexDirection="row" alignItems="center"
                 justifyContent="center" alignContent="center">
                 <Label text="username: " class="description-label-profile" />
-                <!-- <Label :text="this.username"
-                    class="description-label-profile" /> -->
-                <Label text="developer"
+                <Label :text="this.username"
                     class="description-label-profile" />
+                <!-- <Label text="developer" class="description-label-profile" /> -->
             </FlexboxLayout>
             <Label text="Check back later for more information"
                 class="description-label-profile"
@@ -25,11 +24,15 @@
 
 <script>
     import Login from "./Login";
+    const userntoken = require("./UserTokenMap.js");
     export default {
         data() {
-            return {};
+            return {
+                username: userntoken[0].username,
+                token: userntoken[0].token
+            };
         },
-        props: ["username"],
+        // props: ["username"],
         methods: {
             onButtonTap() {
                 console.log("Button was pressed");

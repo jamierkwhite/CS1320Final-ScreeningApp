@@ -30,7 +30,7 @@
                         backgroundColor="purple" /> 
                         backgrounds either transparent #E4F2FD #f5f5f5 white or black-->
                     <FlexboxLayout row="0" col="0" flexDirection="column"
-                        @tap="goTo('patsearch')" backgroundColor="#E4F2FD"
+                        @tap="goTo('comesoon')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
                         alignContent="center"
                         style="margin-right: 20px; margin-top: 20px">

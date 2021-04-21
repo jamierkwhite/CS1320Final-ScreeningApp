@@ -147,8 +147,11 @@
             },
 
             onFilterTap() {
-                action("Choose Filter", "Cancel", ["id", "first_name", "last_name"])
-                .then(result => {
+                action("Choose Filter", "Cancel", [
+                    "id",
+                    "first_name",
+                    "last_name"
+                ]).then(result => {
                     if (result == "Cancel") {
                         this.currentFilter = this.currentFilter;
                     } else {
@@ -201,6 +204,7 @@
             },
 
             getPatients(args) {
+                this.patients = [];
                 let searchBar = args.object;
                 var searchText = searchBar.text;
                 if (searchText == null) {
@@ -208,15 +212,31 @@
                 }
                 console.log("You searching for " + searchText);
                 this.searching = searchText;
+                const searchFor = this.currentFilter;
+                var postreqcontent = null;
+                if (searchFor == "id") {
+                    postreqcontent = JSON.stringify({
+                        id: this.searching
+                    });
+                }
+                if (searchFor == "first_name") {
+                    postreqcontent = JSON.stringify({
+                        first_name: this.searching
+                    });
+                }
+                if (searchFor == "last_name") {
+                    postreqcontent = JSON.stringify({
+                        last_name: this.searching
+                    });
+                }
+                console.log(searchFor);
                 Http.request({
                     url: "https://rhd-screening.herokuapp.com/find_patients",
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    content: JSON.stringify({
-                        first_name: this.searching
-                    })
+                    content: postreqcontent
                 }).then(
                     response => {
                         console.log(response);

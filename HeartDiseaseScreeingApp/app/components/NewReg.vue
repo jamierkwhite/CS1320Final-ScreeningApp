@@ -63,6 +63,7 @@
     var fs = require("file-system");
     var bghttpModule = require("nativescript-background-http");
     var session = bghttpModule.session("image-upload");
+    const userntoken = require("./UserTokenMap.js");
 
     export default {
         data() {
@@ -180,10 +181,12 @@
                         }
                     ]
                 },
-                committedPerson: {}
+                committedPerson: {},
+                username: userntoken[0].username,
+                token: userntoken[0].token
             };
         },
-        props: ["token", "username"],
+        // props: ["token", "username"],
         methods: {
             onButtonTap() {
                 // LOGS THE PATIENT REGISTRATION DATA THAT HAS BEEN INPUTTED
