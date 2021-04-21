@@ -1,6 +1,5 @@
 <template>
     <Page backgroundColor="#ffcfcc">
-        <!-- #ccf9ff #E4F2FD #bff8ff-->
         <ActionBar title="Home">
             <NavigationButton visibility="collapsed" />
             <ActionItem @tap="onButtonTap" icon="res://home"
@@ -11,24 +10,10 @@
         </ActionBar>
         <ScrollView>
             <StackLayout class="home-panel">
-                <!--Add your page content here-->
+                <!-- home screen content here-->
                 <Image class="logo" src="~/images/logo_real.png" height="150"
                     style="margin-bottom: 75px" />
-                <!-- <Label textWrap="true" text="Heart Disease Screening App"
-                    class="h2 description-label" /> -->
                 <GridLayout columns="*, *" rows="*, *, *" height="500">
-                    <!-- backgroundColor="lightgray"> -->
-                    <!-- <Label text="Label 1" row="0" col="0"
-                        backgroundColor="red" style="margin-right: 20px" />
-                    <Label text="Label 2" row="0" col="1"
-                        backgroundColor="green" />
-                    <Label text="Label 3" row="1" col="0"
-                        backgroundColor="blue" />
-                    <Label text="Label 4" row="1" col="1"
-                        backgroundColor="yellow" /> -->
-                    <!-- <Label text="Label 5" row="2" col="0"
-                        backgroundColor="purple" /> 
-                        backgrounds either transparent #E4F2FD #f5f5f5 white or black-->
                     <FlexboxLayout row="0" col="0" flexDirection="column"
                         @tap="goTo('comesoon')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
@@ -79,8 +64,6 @@
                         <Label text="Screening" color="black"
                             style="font-weight: bold;" />
                     </FlexboxLayout>
-                    <!-- <Label text="Label 6" row="2" col="1"
-                        backgroundColor="pink" /> @tap="onButtonTap"-->
                     <FlexboxLayout row="2" col="1" flexDirection="column"
                         @tap="goTo('newreg')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
@@ -159,7 +142,6 @@
                         }
                     });
                 }
-                // this.$navigateTo(this.routes[s]);
             }
         }
     };

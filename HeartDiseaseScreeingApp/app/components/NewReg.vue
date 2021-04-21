@@ -5,7 +5,6 @@
                 ios.position="right" android.position="actionBar">
             </ActionItem>
         </ActionBar>
-        <!-- <RadDataForm :source="album" /> -->
         <ScrollView>
             <StackLayout>
                 <GridLayout columns="*, *" rows="*" height="100"
@@ -192,7 +191,7 @@
                 // LOGS THE PATIENT REGISTRATION DATA THAT HAS BEEN INPUTTED
                 console.log(this.committedPerson);
 
-                // EXAMPLE POST REQUEST TO REGISTER PATIENT
+                // POST REQUEST TO REGISTER PATIENT
                 Http.request({
                     url: "https://rhd-screening.herokuapp.com/register",
                     method: "POST",
@@ -205,10 +204,6 @@
                     })
                 }).then(
                     response => {
-                        // console.log(response);
-                        // console.log(response.content.toString());
-                        // const result = response.content.toJSON();
-                        // console.log(`Http POST Result: ${result}`);
                         this.$navigateTo(HelloWorld, {
                             props: {
                                 username: this.username,
@@ -222,22 +217,11 @@
                     }
                 );
             },
-            //     then((response: HttpResponse) => {
-            //         const result = response.content.toJSON();
-            //         console.log(`Http POST Result: ${result}`);
-            //         this.$navigateTo(HelloWorld, {
-            //             props: {
-            //                 token: this.token
-            //             }
-            //         });
-            //     }, e => {
-            //         console.log(e);
-            //         this.alert(e);
-            //     });
-            // },
+
             onPropertyCommitted(data) {
                 this.committedPerson = data.object.editedObject;
             },
+
             takeRegPhoto() {
                 camera
                     .takePicture()
@@ -287,7 +271,6 @@
             }
         }
     };
-    //#34ebcf
 </script>
 
 <style scoped>

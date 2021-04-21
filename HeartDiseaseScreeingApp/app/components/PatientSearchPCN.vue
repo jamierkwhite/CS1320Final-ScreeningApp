@@ -53,8 +53,6 @@
                                     style="margin-right: 8px; padding: 0px; font-size: 14px; font-weight:bold"
                                     :class="pat.consent_url" />
                             </FlexboxLayout>
-                            <!-- <Label :text="pat.patientid" class="t-12"
-                                style="width: 60%" /> -->
                         </FlexboxLayout>
                     </v-template>
                 </ListView>
@@ -108,10 +106,6 @@
                 searching: ""
             };
         },
-
-        // beforeMount() {
-        //     this.getMyRestaurants();
-        // },
 
         methods: {
             onButtonTap() {

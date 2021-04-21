@@ -57,14 +57,10 @@
                                 <Label :text="pat.consent_url"
                                     style="margin-right: 8px; padding: 0px; font-size: 14px; font-weight:bold"
                                     :class="pat.consent_url" />
-                            </FlexboxLayout>
-                            <!-- <Label :text="pat.patientid" class="t-12"
-                                style="width: 60%" /> -->
+                            </FlexboxLayout>>
                         </FlexboxLayout>
                     </v-template>
                 </ListView>
-                <!-- <Label :text="patients[0].first_name"
-                    style="margin-right: 8px; padding: 0px; font-size: 14px; font-weight:bold" /> -->
             </StackLayout>
         </ScrollView>
     </Page>
@@ -123,10 +119,6 @@
             };
         },
         // props: ["username", "token"],
-
-        // beforeMount() {
-        //     this.getMyRestaurants();
-        // },
 
         methods: {
             onButtonTap() {

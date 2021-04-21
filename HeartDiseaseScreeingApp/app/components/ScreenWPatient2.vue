@@ -11,7 +11,6 @@
                     style="margin-top:30px; margin-bottom: 40px; padding-bottom: 30px; border-color: black; border-width: 0 0 2 0; width:95%"
                     alignItems="center" justifyContent="center"
                     alignContent="center">
-                    <!-- #696969 -->
                     <FlexboxLayout flexDirection="row" class="t-12"
                         alignItems="center" justifyContent="center"
                         alignContent="center">
@@ -156,6 +155,7 @@
                 console.log(this.committedPerson);
                 this.committedPerson = JSON.stringify(this.committedPerson);
                 console.log(this.committedPerson);
+                
                 // EXAMPLE POST REQUEST TO SUMBIT BASIC SCREENING
                 Http.request({
                     url: "https://rhd-screening.herokuapp.com/screening_echo",
@@ -220,7 +220,6 @@
             }
         }
     };
-    //#34ebcf
 </script>
 
 <style scoped>

@@ -5,13 +5,11 @@
                 android.position="actionBar">
             </ActionItem>
         </ActionBar>
-        <!-- <RadDataForm :source="album" /> -->
         <StackLayout>
             <FlexboxLayout flexDirection="column"
                 style="margin-top:30px; margin-bottom: 40px; padding-bottom: 30px; border-color: black; border-width: 0 0 2 0; width:95%"
                 alignItems="center" justifyContent="center"
                 alignContent="center">
-                <!-- #696969 -->
                 <FlexboxLayout flexDirection="row" class="t-12"
                     alignItems="center" justifyContent="center"
                     alignContent="center">
@@ -192,7 +190,6 @@
             }
         }
     };
-    //#34ebcf
 </script>
 
 <style scoped>
@@ -220,8 +217,6 @@
     }
 
     PropertyEditor[type='MultilineText'] DataFormEditorCore {
-        /* margin-top: 15;
-        margin-bottom: 15; */
         margin-left: 0;
         margin-right: 0;
         padding-top: 50;

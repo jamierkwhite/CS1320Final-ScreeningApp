@@ -90,22 +90,7 @@
                 this.login();
             },
             login() {
-                // ADD YOUR OWN CODE
                 this.$navigateTo(Login);
-            },
-            forgotPassword() {
-                prompt({
-                    title: "Forgot Password",
-                    message: "Enter the email address you used to register for this app to reset your password.",
-                    inputType: "email",
-                    defaultText: "",
-                    okButtonText: "Ok",
-                    cancelButtonText: "Cancel"
-                }).then(data => {
-                    if (data.result) {
-                        // ADD YOUR OWN CODE
-                    }
-                });
             },
             focusPassword() {
                 this.$refs.password.nativeView.focus();

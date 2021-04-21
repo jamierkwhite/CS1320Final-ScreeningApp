@@ -12,7 +12,6 @@
                 <Label text="username: " class="description-label-profile" />
                 <Label :text="this.username"
                     class="description-label-profile" />
-                <!-- <Label text="developer" class="description-label-profile" /> -->
             </FlexboxLayout>
             <Label text="Check back later for more information"
                 class="description-label-profile"

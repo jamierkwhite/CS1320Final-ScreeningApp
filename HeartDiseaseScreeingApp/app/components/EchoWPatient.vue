@@ -11,7 +11,6 @@
                     style="margin-top:30px; margin-bottom: 40px; padding-bottom: 30px; border-color: black; border-width: 0 0 2 0; width:95%"
                     alignItems="center" justifyContent="center"
                     alignContent="center">
-                    <!-- #696969 -->
                     <FlexboxLayout flexDirection="row" class="t-12"
                         alignItems="center" justifyContent="center"
                         alignContent="center">
@@ -174,61 +173,6 @@
 
                 console.log(this.committedPerson);
 
-                console.log(this.committedPerson[
-                    "a_valve_thickness_normality"]);
-
-                // if (this.committedPerson["am_valve_leaflet_thickness_normality"] === 0) {
-                //     this.committedPerson["am_valve_leaflet_thickness_normality"] = "Normal";
-                // }
-
-                // if (
-                //     this.committedPerson[
-                //         "pm_valve_leaflet_thickness_normality"] ===
-                //     0
-                // ) {
-                //     this.committedPerson[
-                //             "pm_valve_leaflet_thickness_normality"] =
-                //         "Normal";
-                // }
-
-                // if (this.committedPerson["am_valve_mobility_normality"] ===
-                //     0) {
-                //     this.committedPerson["am_valve_mobility_normality"] =
-                //         "Normal";
-                // }
-
-                // if (this.committedPerson["pm_valve_mobility_normality"] ===
-                //     0) {
-                //     this.committedPerson["pm_valve_mobility_normality"] =
-                //         "Normal";
-                // }
-
-                // if (this.committedPerson["a_valve_thickness_normality"] ===
-                //     0) {
-                //     this.committedPerson["a_valve_thickness_normality"] =
-                //         "Normal";
-                // }
-
-                // if (this.committedPerson["a_valve_function_normality"] ===
-                //     0) {
-                //     this.committedPerson["a_valve_function_normality"] =
-                //         "Normal";
-                // }
-
-                // if (this.committedPerson["m_valve_function_normality"] ===
-                //     0) {
-                //     this.committedPerson["m_valve_function_normality"] =
-                //         "Normal";
-                // }
-
-                // if (this.committedPerson["aortic_regurgitation"] === 0) {
-                //     this.committedPerson["aortic_regurgitation"] = "> 1.5cm";
-                // }
-
-                // if (this.committedPerson["mitral_regurgitation"] === 0) {
-                //     this.committedPerson["mitral_regurgitation"] = "> 1.5cm";
-                // }
-
                 this.committedPerson.date = this.datetimeobj;
                 this.committedPerson.id = this.patientid;
 
@@ -238,7 +182,7 @@
 
                 console.log(this.committedPerson);
 
-                // EXAMPLE POST REQUEST TO SUMBIT FULL ECHO ADVANCED SCREENING
+                // POST REQUEST TO SUMBIT FULL ECHO ADVANCED SCREENING
                 Http.request({
                     url: "https://rhd-screening.herokuapp.com/screening_echo",
                     method: "POST",
@@ -251,10 +195,6 @@
                     })
                 }).then(
                     response => {
-                        // console.log(response);
-                        // console.log(response.content.toString());
-                        // const result = response.content.toJSON();
-                        // console.log(`Http POST Result: ${result}`);
                         let self = this;
                         alert({
                             title: "RHDScreen",
@@ -272,18 +212,9 @@
                             okButtonText: "OK",
                             message: "Error. Try Again."
                         });
-                        // this.alert("Error: " + e.message); //e.statusCode
                     }
                 );
             },
-
-            //     this.$navigateTo(HelloWorld, {
-            //         props: {
-            //             username: "",
-            //             token: ""
-            //         }
-            //     });
-            // },
 
             goHome() {
                 console.log("really going home");
@@ -318,7 +249,6 @@
             }
         }
     };
-    //#34ebcf
 </script>
 
 <style scoped>

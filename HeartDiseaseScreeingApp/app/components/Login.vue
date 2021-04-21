@@ -87,14 +87,9 @@
                 this.login();
             },
             login() {
-                // ADD YOUR OWN CODE
-                // this.$navigateTo(HelloWorld, {
-                //     props: {
-                //         username: this.user.username
-                //     }
-                // });
                 console.log("trying to login");
-                // EXAMPLE POST REQUEST TO LOGIN
+
+                // POST REQUEST TO LOGIN
                 Http.request({
                         url: "https://rhd-screening.herokuapp.com/login",
                         method: "POST",
@@ -105,15 +100,6 @@
                             username: this.user.username,
                             password: this.user.password
                         })
-                        // data: {
-                        //     "username":this.user.username,
-                        //     "password":this.user.password
-                        // }
-                        // body: JSON.stringify({
-                        //     username: this.user.username,
-                        //     password: this.user.password
-                        // })
-                        // data: "username=%22developer%22&password=%22C8FZXqr9bIlMFvL2%22"
                     })
                     .then(
                         response => {
@@ -121,8 +107,6 @@
                             console.log(response.statusCode);
                             const result = response.content.toJSON();
                             console.log(`Http POST Result: ${result}`);
-                            // userntoken.push(this.user.username);
-                            // userntoken.push(result.token);
                             userntoken.push({
                                 username: this.user.username,
                                 token: result.token
@@ -144,20 +128,6 @@
                         this.alert("Invalid username and/or password.");
                     });
             },
-            //     then((response: HttpResponse) => {
-            //         const result = response.content.toJSON();
-            //         console.log(`Http POST Result: ${result}`);
-            //         this.$navigateTo(HelloWorld, {
-            //             props: {
-            //                 username: this.user.username,
-            //                 token: result.token
-            //             }
-            //         });
-            //     }, e => {
-            //         console.log(e);
-            //         this.alert("Invalid username and/or password.");
-            //     });
-            // },
             forgotPassword() {
                 prompt({
                     title: "Forgot Password",
@@ -168,7 +138,7 @@
                     cancelButtonText: "Cancel"
                 }).then(data => {
                     if (data.result) {
-                        // ADD YOUR OWN CODE
+                        console.log("email address entered")
                     }
                 });
             },
