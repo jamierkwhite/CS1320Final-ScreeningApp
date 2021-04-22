@@ -1,3 +1,5 @@
+## RHDScreen CS1320 Final Project
+
 Instructions to run:
 * Backend: no startup needed as it's deployed
 * Frontend: First, create a new NativeScript playground. Then, within this repository, go to HeartDiseaseScreeingApp/app/ and then upload the components folder to the NS playground, upload the images folder to the NS playground, and replace the app.js and app.css files in NS playground with the ones in this directory. Save the project and scan the QR code on the NativeScript playground app on your phone to open RHDScreen in NativeScript preview.
