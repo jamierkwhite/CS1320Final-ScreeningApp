@@ -7,6 +7,7 @@
         </ActionBar>
         <ScrollView>
             <StackLayout>
+                <!-- Search Bar -->
                 <FlexboxLayout flexDirection="row">
                     <SearchBar hint=" search patient id..."
                         :text="searchPhrase" textFieldHintColor="#BBBBBB"
@@ -16,6 +17,7 @@
                     <Button text="Cancel" @tap="onButtonTap"
                         class="button2" />
                 </FlexboxLayout>
+                <!-- List of patients -->
                 <Label text="Patient List:"
                     style="font-size: 18px; margin-top: 50px; margin-bottom: 20px; margin-left: 20px; font-weight: bold;" />
                 <ListView for="pat in patients" @itemTap="onItemTap"
@@ -74,6 +76,7 @@
         Http,
         HttpResponse
     } from "@nativescript/core";
+    const userntoken = require("./UserTokenMap.js");
     export default {
         data() {
             return {
@@ -104,11 +107,16 @@
 
                 searchPhrase: "",
 
-                searching: ""
+                searching: "",
+
+                username: userntoken[0].username,
+
+                token: userntoken[0].token
             };
         },
 
         methods: {
+            // Minimizes keyboard
             onButtonTap() {
                 console.log("Button was pressed");
                 if (isIOS) {
@@ -120,6 +128,7 @@
                 }
             },
 
+            // Navigates home
             onButtonTap2() {
                 console.log("Button was pressed");
                 console.log(this.username);
@@ -132,6 +141,7 @@
                 });
             },
 
+            // Navigates to full echo screening page with patient info
             onItemTap: function(args) {
                 console.log("Item with index: " + args.index + " tapped");
                 console.log("Patient: " + this.patients[args.index]
@@ -155,11 +165,13 @@
                 }, 0);
             },
 
+            // Displays search query
             onSearchSubmit(args) {
                 let searchBar = args.object;
                 console.log("You are searching for " + searchBar.text);
             },
 
+            // Filters patients when search bar changed
             onSearchChange(args) {
                 let searchBar = args.object;
                 var searchText = searchBar.text;
@@ -175,6 +187,7 @@
                 this.patients = filteredResult;
             },
 
+            // Gets patients from the server with a POST request
             getPatients(args) {
                 let searchBar = args.object;
                 var searchText = searchBar.text;

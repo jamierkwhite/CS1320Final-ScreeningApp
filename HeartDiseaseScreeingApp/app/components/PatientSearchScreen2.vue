@@ -7,6 +7,7 @@
         </ActionBar>
         <ScrollView>
             <StackLayout>
+                <!-- Search Bar -->
                 <FlexboxLayout flexDirection="row">
                     <SearchBar hint=" search patient id..."
                         :text="searchPhrase" textFieldHintColor="#BBBBBB"
@@ -16,10 +17,12 @@
                     <Button text="Cancel" @tap="onButtonTap"
                         class="button2" />
                 </FlexboxLayout>
+                <!-- Button to choose search filter -->
                 <FlexboxLayout flexDirection="row-reverse">
                     <Button :text="this.currentFilter" @tap="onFilterTap()"
                         class="button3" />
                 </FlexboxLayout>
+                <!-- Patient list based on search -->
                 <Label text="Patient List:"
                     style="font-size: 18px; margin-top: 50px; margin-bottom: 20px; margin-left: 20px; font-weight: bold;" />
                 <ListView ref="listView" for="pat in patients"
@@ -112,7 +115,7 @@
 
                 searching: "",
 
-                currentFilter: "id",
+                currentFilter: "PatientID",
 
                 username: userntoken[0].username,
 
@@ -122,6 +125,7 @@
         // props: ["username", "token"],
 
         methods: {
+            // Minimizes keyboard
             onButtonTap() {
                 console.log("Button was pressed");
                 if (isIOS) {
@@ -133,6 +137,7 @@
                 }
             },
 
+            // Redirects user to home page
             onButtonTap2() {
                 console.log("Button was pressed");
                 console.log(this.username);
@@ -145,11 +150,12 @@
                 });
             },
 
+            // Displays action menu and allows user to choose search filter
             onFilterTap() {
                 action("Choose Filter", "Cancel", [
-                    "id",
-                    "first_name",
-                    "last_name"
+                    "PatientID",
+                    "First Name",
+                    "Last Name"
                 ]).then(result => {
                     if (result == "Cancel") {
                         this.currentFilter = this.currentFilter;
@@ -159,6 +165,7 @@
                 });
             },
 
+            // Navigates user to basic screen page with patient info
             onItemTap: function(args) {
                 console.log("Item with index: " + args.index + " tapped");
                 console.log("Patient: " + this.patients[args.index]
@@ -202,6 +209,7 @@
                 this.patients = filteredResult;
             },
 
+            // Gets patients based on search string with POST request to server
             getPatients(args) {
                 this.patients = [];
                 let searchBar = args.object;
@@ -213,17 +221,17 @@
                 this.searching = searchText;
                 const searchFor = this.currentFilter;
                 var postreqcontent = null;
-                if (searchFor == "id") {
+                if (searchFor == "PatientID") {
                     postreqcontent = JSON.stringify({
                         id: this.searching
                     });
                 }
-                if (searchFor == "first_name") {
+                if (searchFor == "First Name") {
                     postreqcontent = JSON.stringify({
                         first_name: this.searching
                     });
                 }
-                if (searchFor == "last_name") {
+                if (searchFor == "Last Name") {
                     postreqcontent = JSON.stringify({
                         last_name: this.searching
                     });

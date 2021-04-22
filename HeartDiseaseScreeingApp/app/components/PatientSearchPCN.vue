@@ -74,6 +74,7 @@
         Http,
         HttpResponse
     } from "@nativescript/core";
+    const userntoken = require("./UserTokenMap.js");
     export default {
         data() {
             return {
@@ -104,7 +105,11 @@
 
                 searchPhrase: "",
 
-                searching: ""
+                searching: "",
+
+                username: userntoken[0].username,
+
+                token: userntoken[0].token
             };
         },
 

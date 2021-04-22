@@ -7,6 +7,7 @@
         </ActionBar>
         <ScrollView>
             <StackLayout>
+                <!-- Icons that when pressed open up camera to take picture of patient and forms -->
                 <GridLayout columns="*, *" rows="*" height="100"
                     style="margin-bottom: 40px">
                     <FlexboxLayout row="0" col="0" flexDirection="column"
@@ -30,6 +31,7 @@
                             style="font-weight: bold;" />
                     </FlexboxLayout>
                 </GridLayout>
+                <!-- Patient registration form -->
                 <RadDataForm :source="patient" :metadata="patientMetadata"
                     @propertyCommitted="onPropertyCommitted"
                     style="margin-bottom:40px" />
@@ -221,6 +223,7 @@
                 );
             },
 
+            // Redirects the user to the home page
             goHome() {
                 console.log("really going home");
                 this.$navigateTo(HelloWorld, {
@@ -231,10 +234,12 @@
                 });
             },
 
+            // Saves data to object once it has been entered on form
             onPropertyCommitted(data) {
                 this.committedPerson = data.object.editedObject;
             },
 
+            // Allows access to camera and saves pictures
             takeRegPhoto() {
                 camera
                     .takePicture()

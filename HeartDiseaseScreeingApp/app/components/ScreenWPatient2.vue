@@ -7,6 +7,7 @@
         </ActionBar>
         <ScrollView>
             <StackLayout>
+                <!-- Diplay patient information -->
                 <FlexboxLayout flexDirection="column"
                     style="margin-top:30px; margin-bottom: 40px; padding-bottom: 30px; border-color: black; border-width: 0 0 2 0; width:95%"
                     alignItems="center" justifyContent="center"
@@ -30,6 +31,7 @@
                             style="margin-right: 8px; padding: 0px; font-size: 18px; font-weight: bold" />
                     </FlexboxLayout>
                 </FlexboxLayout>
+                <!-- Basic Screening form -->
                 <RadDataForm :source="patient" :metadata="patientMetadata"
                     @propertyCommitted="onPropertyCommitted" />
                 <Button text="Submit" @tap="onButtonTap" class="regsubmit" />
@@ -143,6 +145,7 @@
             this.committedPerson = JSON.stringify(this.patient);
         },
         methods: {
+            // Submits basic screening form and redirects user home
             onButtonTap() {
                 console.log("Button tapped");
                 this.committedPerson = JSON.parse(this.committedPerson);
@@ -155,7 +158,7 @@
                 console.log(this.committedPerson);
                 this.committedPerson = JSON.stringify(this.committedPerson);
                 console.log(this.committedPerson);
-                
+
                 // EXAMPLE POST REQUEST TO SUMBIT BASIC SCREENING
                 Http.request({
                     url: "https://rhd-screening.herokuapp.com/screening_echo",
@@ -189,6 +192,7 @@
                     }
                 );
             },
+            // Redirects user home
             goHome() {
                 console.log("really going home");
                 this.$navigateTo(HelloWorld, {
@@ -198,10 +202,12 @@
                     }
                 });
             },
+            // Committs data when form field editted
             onPropertyCommitted(data) {
                 console.log(data.object.editedObject);
                 this.committedPerson = data.object.editedObject;
             },
+            // Gets today's date
             getDate() {
                 var today = new Date();
                 this.datetimeobj = today;

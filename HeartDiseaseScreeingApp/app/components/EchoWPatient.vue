@@ -7,6 +7,7 @@
         </ActionBar>
         <ScrollView>
             <StackLayout>
+                <!-- Display patient information -->
                 <FlexboxLayout flexDirection="column"
                     style="margin-top:30px; margin-bottom: 40px; padding-bottom: 30px; border-color: black; border-width: 0 0 2 0; width:95%"
                     alignItems="center" justifyContent="center"
@@ -30,6 +31,7 @@
                             style="margin-right: 8px; padding: 0px; font-size: 18px; font-weight: bold" />
                     </FlexboxLayout>
                 </FlexboxLayout>
+                <!-- Full echo form -->
                 <RadDataForm :source="patient" :metadata="patientMetadata"
                     @propertyCommitted="onPropertyCommitted" />
                 <Button text="Submit" @tap="onButtonTap" class="regsubmit" />
@@ -166,6 +168,7 @@
             this.committedPerson = JSON.stringify(this.patient);
         },
         methods: {
+            // Submits full echo screening form and redirects user home
             onButtonTap() {
                 console.log("Button tapped");
 
@@ -216,6 +219,7 @@
                 );
             },
 
+            //  Redirects the user home
             goHome() {
                 console.log("really going home");
                 this.$navigateTo(HelloWorld, {
@@ -226,11 +230,13 @@
                 });
             },
 
+            // Saves fields of form in object when edited
             onPropertyCommitted(data) {
                 console.log(data.object.editedObject);
                 this.committedPerson = data.object.editedObject;
             },
 
+            // Gets today's date as a date time object and readable string
             getDate() {
                 var today = new Date();
                 this.datetimeobj = today;

@@ -1,5 +1,6 @@
 <template>
     <Page class="page">
+        <!-- Page to show coming soon -->
         <StackLayout class="profile-page">
             <Label text="Coming Soon!" class="soon-label" />
         </StackLayout>

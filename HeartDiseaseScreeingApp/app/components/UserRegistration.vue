@@ -1,5 +1,6 @@
 <template>
     <Page class="page">
+        <!-- User registration form -->
         <StackLayout class="form">
             <Image class="logo" src="~/images/logo2.png" />
             <Label class="header" text="RHDScreen"></Label>
@@ -69,6 +70,7 @@
             };
         },
         methods: {
+            // Checks data upon form submit then goes back to login page
             submit() {
                 if (!this.user.username || !this.user.password) {
                     this.alert(
@@ -83,14 +85,13 @@
                     this.alert("Invalid Registration Code");
                     return;
                 }
-                this.login();
-            },
-            login() {
                 this.$navigateTo(Login);
             },
+            // Focuses on password when text field selected
             focusPassword() {
                 this.$refs.password.nativeView.focus();
             },
+            // Displays custom alert from RHDScreen
             alert(message) {
                 return alert({
                     title: "RHDScreen",
@@ -98,6 +99,7 @@
                     message: message
                 });
             },
+            // Redirects user back to login page
             toggleForm() {
                 this.isLoggingIn = !this.isLoggingIn;
                 this.$navigateTo(Login);

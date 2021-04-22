@@ -5,6 +5,7 @@
                 ios.position="right" android.position="actionBar">
             </ActionItem>
         </ActionBar>
+        <!-- Shows welcome message and user's username -->
         <StackLayout class="profile-page">
             <Label text="Welcome!" class="description-label-welcome" />
             <FlexboxLayout flexDirection="row" alignItems="center"
@@ -16,6 +17,8 @@
             <Label text="Check back later for more information"
                 class="description-label-profile"
                 style="color: darkgray; margin-top:100" />
+
+            <!-- Log out button -->
             <Label text="Logout" class="logout" @tap="gotoLogin()"></Label>
         </StackLayout>
     </Page>
@@ -33,10 +36,12 @@
         },
         // props: ["username"],
         methods: {
+            // Redirects back home
             onButtonTap() {
                 console.log("Button was pressed");
                 this.$navigateBack();
             },
+            // Redirects to log in as part of logging out
             gotoLogin() {
                 this.$navigateTo(Login);
             }

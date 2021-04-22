@@ -1,8 +1,10 @@
 <template>
     <Page class="page">
+        <!-- Action Bar with no back button to keep the page clean -->
         <ActionBar title="Login">
             <NavigationButton visibility="collapsed" />
         </ActionBar>
+        <!-- Form for logging in -->
         <StackLayout class="form">
             <Image class="logo" src="~/images/logo2.png" />
             <Label class="header" text="RHDScreen"></Label>
@@ -65,6 +67,8 @@
             };
         },
         methods: {
+            // Submits form - will that both usernamme and password were entered
+            // and then will call the login function
             submit() {
                 if (!this.user.username || !this.user.password) {
                     this.alert(
@@ -73,6 +77,7 @@
                 }
                 this.login();
             },
+            // Sends request to server then navigates to home page if successful
             login() {
                 console.log("trying to login");
 
@@ -115,14 +120,17 @@
                         this.alert("Invalid username and/or password.");
                     });
             },
+            // Displays an alert if the user presses forgot password
             forgotPassword() {
                 this.alert(
                     "Please contact your system administrator to reset your password."
                 );
             },
+            // Focuses on the password field when selected
             focusPassword() {
                 this.$refs.password.nativeView.focus();
             },
+            // Returns an alert from the RHDScreen app
             alert(message) {
                 return alert({
                     title: "RHDScreen",
@@ -130,6 +138,7 @@
                     message: message
                 });
             },
+            // Redirects the user to the registration form if they press sign up
             toggleForm() {
                 this.isLoggingIn = !this.isLoggingIn;
                 this.$navigateTo(UserRegistration);

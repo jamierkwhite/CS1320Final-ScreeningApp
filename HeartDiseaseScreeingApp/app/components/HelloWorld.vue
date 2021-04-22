@@ -1,5 +1,6 @@
 <template>
     <Page backgroundColor="#ffcfcc">
+        <!-- Action bar with home and profile buttons -->
         <ActionBar title="Home">
             <NavigationButton visibility="collapsed" />
             <ActionItem @tap="onButtonTap" icon="res://home"
@@ -9,11 +10,14 @@
             </ActionItem>
         </ActionBar>
         <ScrollView>
+            <!-- home screen content here-->
             <StackLayout class="home-panel">
-                <!-- home screen content here-->
+                <!-- logo image -->
                 <Image class="logo" src="~/images/logo_real.png" height="150"
                     style="margin-bottom: 75px" />
+                <!-- navigation tabs -->
                 <GridLayout columns="*, *" rows="*, *, *" height="500">
+                    <!-- tab for scheduling -->
                     <FlexboxLayout row="0" col="0" flexDirection="column"
                         @tap="goTo('comesoon')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
@@ -24,6 +28,7 @@
                         <Label text="Scheduling" color="black"
                             style="font-weight: bold;" />
                     </FlexboxLayout>
+                    <!-- tab for mileage -->
                     <FlexboxLayout row="0" col="1" flexDirection="column"
                         @tap="goTo('comesoon')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
@@ -34,6 +39,7 @@
                         <Label text="Mileage" color="black"
                             style="font-weight: bold;" />
                     </FlexboxLayout>
+                    <!-- tab for full echo -->
                     <FlexboxLayout row="1" col="0" flexDirection="column"
                         @tap="goTo('patsearchecho')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
@@ -44,6 +50,7 @@
                         <Label text="Full Echo" color="black"
                             style="font-weight: bold;" />
                     </FlexboxLayout>
+                    <!-- tab for penicillin -->
                     <FlexboxLayout row="1" col="1" flexDirection="column"
                         @tap="goTo('patsearchpcn')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
@@ -54,6 +61,7 @@
                         <Label text="Penicillin" color="black"
                             style="font-weight: bold;" />
                     </FlexboxLayout>
+                    <!-- tab for basic screening -->
                     <FlexboxLayout row="2" col="0" flexDirection="column"
                         @tap="goTo('patsearchscreen')"
                         backgroundColor="#E4F2FD" alignItems="center"
@@ -64,6 +72,7 @@
                         <Label text="Screening" color="black"
                             style="font-weight: bold;" />
                     </FlexboxLayout>
+                    <!-- tab for registration -->
                     <FlexboxLayout row="2" col="1" flexDirection="column"
                         @tap="goTo('newreg')" backgroundColor="#E4F2FD"
                         alignItems="center" justifyContent="center"
@@ -107,6 +116,7 @@
                 console.log("Button was pressed");
                 console.log(userntoken);
             },
+            // Redirects user to the profile page
             onTapProfile() {
                 console.log(this.username);
                 this.$navigateTo(UserProfile, {
@@ -115,6 +125,7 @@
                     }
                 });
             },
+            // Redirects user to other pages based on which icon tab they press
             goTo(s) {
                 console.log("going to page");
                 if (s === "newreg") {
